@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Juego – ¡Descárgalo gratis!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#7b5cff; --sky2:#4b2fd0; --ink:#2b1b5a; --paper:#fffdf5;
+  --sun:#ffd93d; --coral:#ff6b6b; --mint:#3ddc97; --hill:#2fbf71;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--sky:#5a3fd6;--sky2:#2d1a8f;--paper:#fff8e6}
+}
+:root[data-theme="dark"]{--sky:#5a3fd6;--sky2:#2d1a8f;--paper:#fff8e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Fredoka','Trebuchet MS',Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--sky2),var(--sky) 60%,#a98bff);
+  min-height:100vh; overflow-x:hidden; position:relative;
+}
+.cloud{position:absolute;background:#fff;border-radius:99px;opacity:.9;z-index:0}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.c1{width:130px;height:40px;top:7%;left:6%;animation:drift 18s ease-in-out infinite alternate}
+.c1::before{width:60px;height:60px;top:-28px;left:20px}
+.c1::after{width:44px;height:44px;top:-18px;left:68px}
+.c2{width:100px;height:32px;top:18%;right:7%;animation:drift 22s ease-in-out infinite alternate-reverse}
+.c2::before{width:48px;height:48px;top:-22px;left:16px}
+.c2::after{width:34px;height:34px;top:-14px;left:52px}
+@keyframes drift{to{transform:translateX(40px)}}
+.hill{position:absolute;left:-10%;right:-10%;bottom:0;height:130px;background:var(--hill);border-radius:50% 50% 0 0;z-index:0}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:40px 18px 150px}
+.card{
+  background:var(--paper);border:5px solid var(--ink);border-radius:36px;
+  box-shadow:0 10px 0 var(--ink);padding:34px 26px 30px;text-align:center;
+}
+.badge{
+  display:inline-block;background:var(--mint);border:3px solid var(--ink);border-radius:99px;
+  padding:5px 16px;font-weight:700;font-size:16px;transform:rotate(-3deg);margin-bottom:14px;
+}
+.mascot{
+  display:block;margin:0 auto 6px;background:none;border:0;cursor:pointer;
+  font-size:104px;line-height:1.1;font-family:inherit;
+  animation:bob 2.4s ease-in-out infinite;
+}
+.mascot:focus-visible,.go:focus-visible{outline:5px solid var(--coral);outline-offset:5px}
+.mascot.jump{animation:jump .6s ease-out}
+@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}
+@keyframes jump{30%{transform:translateY(-50px) scale(1.15) rotate(-10deg)}100%{transform:none}}
+.stars{font-weight:700;font-size:17px;min-height:26px;margin-bottom:6px}
+h1{font-size:clamp(40px,10vw,68px);line-height:1;font-weight:700;margin-bottom:14px;
+   color:var(--coral);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;
+   text-shadow:4px 4px 0 var(--ink);letter-spacing:1px}
+.desc{font-size:20px;line-height:1.45;max-width:30em;margin:0 auto 26px}
+.go{
+  display:inline-block;text-decoration:none;color:var(--ink);background:var(--sun);
+  font-size:clamp(22px,6vw,30px);font-weight:700;padding:18px 34px;
+  border:5px solid var(--ink);border-radius:26px;box-shadow:0 8px 0 var(--ink);
+  transition:transform .12s,box-shadow .12s;
+}
+.go:hover{transform:translateY(-3px);box-shadow:0 11px 0 var(--ink)}
+.go:active{transform:translateY(8px);box-shadow:0 0 0 var(--ink)}
+.free{margin-top:16px;font-weight:600;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+.chip{border:3px solid var(--ink);border-radius:20px;padding:8px 18px;font-size:16px;font-weight:600;background:#fff}
+.chip b{display:block;font-size:13px;opacity:.75;font-weight:600}
+.chip:nth-child(1){background:#ffe2e2}.chip:nth-child(2){background:#d9fbe9}.chip:nth-child(3){background:#fff3bf}
+h2{font-size:28px;margin:34px 0 14px;color:#fff;text-shadow:3px 3px 0 var(--ink);text-align:center}
+.steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{background:var(--paper);border:4px solid var(--ink);border-radius:26px;box-shadow:0 6px 0 var(--ink);padding:18px 14px;text-align:center}
+.step i{font-style:normal;font-size:44px;display:block}
+.step b{display:block;font-size:20px;margin:4px 0}
+.step span{font-size:16px}
+footer{text-align:center;margin-top:30px;color:#fff;font-size:14px;font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="cloud c1"></div><div class="cloud c2"></div><div class="hill"></div>
+
+<main>
+  <section class="card">
+    <button class="mascot" id="mascot" aria-label="Toca al monstruito para que salte">👾</button>
+    <p class="stars" id="stars" aria-live="polite">¡Toca al monstruito!</p>
+    <h1>Mi Juego</h1>
+    <p class="desc">¡Salta, corre y gana estrellas! Descarga el juego en tu computadora con Windows y empieza a jugar.</p>
+    <a class="go" href="https://drive.google.com/file/d/1lCJ4mJElVAP0X6zp3J6g8nQ_nXCqXRhH/view?usp=sharing" download>⬇️ ¡Descargar gratis!</a>
+    <div class="chips">
+      <div class="chip"><b>Sistema</b>Windows</div>
+      <div class="chip"><b>Formato</b>.EXE</div>
+      <div class="chip"><b>Versión</b>1.0.0</div>
+    </div>
+  </section>
+
+  <h2>¡Listo en 3 pasos!</h2>
+  <section class="steps">
+    <div class="step"><i>⬇️</i><b>1. Descarga</b><span>Toca el botón amarillo.</span></div>
+    <div class="step"><i>💿</i><b>2. Instala</b><span>Abre el archivo y sigue los pasos.</span></div>
+    <div class="step"><i>🎮</i><b>3. ¡Juega!</b><span>Abre el juego y diviértete.</span></div>
+  </section>
+
+  <footer>© 2026 Mi Juego. Todos los derechos reservados.</footer>
+</main>
+
+<script>
+(function(){
+  var m=document.getElementById('mascot'),s=document.getElementById('stars'),n=0;
+  var faces=['👾','🤖','🐸','🦄','🐙','🐼'];
+  m.addEventListener('click',function(){
+    n++;
+    s.textContent='⭐ '.repeat(Math.min(n,8)).trim()+(n>8?' +'+(n-8):'');
+    m.textContent=faces[n%faces.length];
+    m.classList.remove('jump');void m.offsetWidth;m.classList.add('jump');
+  });
+})();
+</script>
+</body>
+</html>
